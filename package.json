@@ -1,0 +1,49 @@
+{
+  "name": "easy_english",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:backend": "nest build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nest start",
+    "start:dev:backend": "ts-node-dev --respawn --transpile-only  --require reflect-metadata --require tsconfig-paths/register src/main.ts",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ga-mi-keke/Easy_English.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ga-mi-keke/Easy_English/issues"
+  },
+  "homepage": "https://github.com/ga-mi-keke/Easy_English#readme",
+  "description": "",
+  "dependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/platform-express": "^11.1.1",
+    "@prisma/client": "^6.6.0",
+    "@tanstack/react-query": "^5.76.1",
+    "axios": "^1.9.0",
+    "next": "^15.3.2",
+    "openai": "^4.98.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.7",
+    "@types/node": "^22.15.18",
+    "prisma": "^6.6.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}

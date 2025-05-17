@@ -1,0 +1,54 @@
+{
+    "compilerOptions": {
+        "jsx": "preserve",
+        "moduleResolution": "node10",
+        "target": "esnext",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": [
+                "*"
+            ]
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "useDefineForClassFields": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "strictBuiltinIteratorReturn": true,
+        "alwaysStrict": true,
+        "useUnknownInCatchVariables": true
+    },
+    "files": [
+        "./next-env.d.ts",
+        "./src/answer/answer.controller.ts",
+        "./src/answer/answer.service.ts",
+        "./src/content/content.module.ts",
+        "./src/content/content.service.ts",
+        "./src/content/difficulty.calibrator.ts",
+        "./src/content/dto/generated-content.dto.ts",
+        "./src/level/level.service.ts",
+        "./src/prisma/prisma.service.ts",
+        "./src/rating/rating.service.ts",
+        "./src/session/Session.controller.ts",
+        "./pages/_app.tsx",
+        "./pages/learning.tsx"
+    ],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

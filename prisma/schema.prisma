@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String      @id @default(uuid())
+  username     String      @unique
+  passwordHash String      @map("password_hash")
+  rating       Int         @default(1000)
+  level        Int
+  displayName  String?     @map("display_name")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  levelLogs    LevelLog[]
+  ratingLogs   RatingLog[]
+  sessions     Session[]
+}
+
+model Content {
+  id         String     @id @default(cuid())
+  difficulty Int
+  passage    String
+  audioUrl   String     @map("audio_url")
+  createdAt  DateTime   @default(now()) @map("created_at")
+  questions  Question[]
+}
+
+model Question {
+  id            String   @id @default(cuid())
+  contentId     String   @map("content_id")
+  questionEn    String   @map("question_en")
+  choice1       String
+  choice2       String
+  choice3       String
+  choice4       String
+  correctChoice Int      @map("correct_choice")
+  answers       Answer[] @relation("QuestionAnswers")
+  content       Content  @relation(fields: [contentId], references: [id])
+
+  @@index([contentId], map: "Question_content_id_fkey")
+}
+
+model Session {
+  id         String    @id @default(cuid())
+  userId     String    @map("user_id")
+  startedAt  DateTime  @default(now()) @map("started_at")
+  finishedAt DateTime? @map("finished_at")
+  scoreRatio Float?    @map("score_ratio")
+  difficulty Int       @default(1000)
+  answers    Answer[]
+  user       User      @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "Session_user_id_fkey")
+}
+
+model Answer {
+  id             String   @id @default(cuid())
+  sessionId      String   @map("session_id")
+  questionId     String   @map("question_id")
+  selectedChoice Int      @map("selected_choice")
+  isCorrect      Boolean  @map("is_correct")
+  question       Question @relation("QuestionAnswers", fields: [questionId], references: [id])
+  session        Session  @relation(fields: [sessionId], references: [id])
+
+  @@index([questionId], map: "Answer_question_id_fkey")
+  @@index([sessionId], map: "Answer_session_id_fkey")
+}
+
+model RatingLog {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  oldRating Int      @map("old_rating")
+  newRating Int      @map("new_rating")
+  delta     Int
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "RatingLog_user_id_fkey")
+}
+
+model LevelLog {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  oldLevel  Int      @map("old_level")
+  newLevel  Int      @map("new_level")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "LevelLog_user_id_fkey")
+}
