@@ -7,6 +7,12 @@
     "noEmit": false,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["pages", "node_modules", ".next"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "pages",
+    "node_modules",
+    ".next"
+  ]
 }
