@@ -22,7 +22,7 @@ type SessionData = {
 };
 
  const fetchSession = async (userId: string): Promise<SessionData> => {
-   // Next.js（3000）ではなく NestJS（3001）を直接叩る
+   // Next.js（3000）ではなく NestJS（3001）を直接叩く
    const res = await axios.post(
      'http://localhost:3001/session/start',
      { userId },
