@@ -1,4 +1,4 @@
-// src/answer/answer.module.ts
+// src/app.module.ts
 import { Module } from '@nestjs/common';
 import { AnswerController } from './answer/answer.controller';
 import { AnswerService }    from './answer/answer.service';
